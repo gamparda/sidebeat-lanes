@@ -142,15 +142,7 @@ async function importPackage(file: File): Promise<void> {
 }
 
 async function generateFromServer(): Promise<void> {
-  if (!audioBlob) { status('먼저 곡 파일을 업로드하세요.'); return; }
-  status('자동 채보 생성 요청 중...');
-  const form = new FormData();
-  form.append('audio', audioBlob, audioName || 'song.wav');
-  form.append('difficulty', 'normal');
-  const response = await fetch('http://127.0.0.1:8000/generate', { method: 'POST', body: form });
-  if (!response.ok) throw new Error(await response.text());
-  applyChart(parseChart(JSON.stringify(await response.json())), audioBlob);
-  status('자동 채보 생성 완료. 타임라인에서 다듬어 저장하세요.');
+  status('자동 분석에는 별도 서버가 필요합니다. 이 체험판에서는 수동 편집 또는 생성된 JSON 가져오기를 사용하세요.');
 }
 
 const timeline = new Timeline({

@@ -3,8 +3,8 @@
   <head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><title>Sidebeat Admin Studio</title></head>
   <body>
     <main class="shell">
-      <nav class="top-nav"><strong>Sidebeat Admin Studio</strong><a href="/">Play Game</a></nav>
-      <section class="hero compact"><div><p class="eyebrow">ADMIN CHART STUDIO</p><h1>Chart Studio</h1><p class="subtitle">관리자용 채보 제작/자동 생성 화면입니다. 메인 게임 UI와 분리되어 있습니다.</p></div></section>
+      <nav class="top-nav"><strong>Sidebeat Admin Studio</strong><a href="index.html">게임으로 돌아가기</a></nav>
+      <section class="hero compact"><div><p class="eyebrow">ADMIN CHART STUDIO</p><h1>Chart Studio</h1><p class="subtitle">곡을 올리고 타임라인을 눌러 나만의 채보를 만드세요. 수동 편집·JSON·패키지 가져오기/내보내기와 이 브라우저의 라이브러리 저장을 사용할 수 있습니다.</p></div></section>
       <section class="studio-grid wide">
         <section class="panel editor-panel">
           <div class="panel-header"><div><p class="eyebrow">MANUAL EDITOR</p><h2>곡 업로드 & 타임라인 편집</h2></div><strong id="editorCount">0 notes</strong></div>
@@ -15,9 +15,9 @@
           <div class="chart-tools"><div><div class="tool-row"><button id="downloadChart">JSON 다운로드</button><button id="saveSong">곡/채보 저장</button><button id="exportPackage">패키지 내보내기</button><button id="clearChart" class="secondary">비우기</button></div><label class="drop-zone"><span>패키지 가져오기(.sidebeat.zip)</span><input id="packageUpload" type="file" accept=".zip,.sidebeat.zip,application/zip" /></label><ol id="chartList" class="chart-list"></ol></div><label><span>리뷰 메모</span><input id="commentInput" type="text" placeholder="현재 시간에 메모 추가" /><button id="addComment" type="button">메모 추가</button><ol id="commentList" class="chart-list"></ol></label><label><span>내보내기 JSON</span><textarea id="exportChart" rows="10" readonly></textarea></label><label><span>불러오기 JSON</span><textarea id="importChart" rows="10" placeholder='{"notes":[{"lane":0,"time":1200,"duration":0}]}'></textarea></label></div>
         </section>
         <aside class="panel side-panel">
-          <p class="eyebrow">AUTO CHARTGEN</p><h2>Python 자동 채보</h2><p class="muted">브라우저 보안상 Python 분석은 로컬 CLI에서 실행합니다. 생성된 JSON을 아래에서 불러오세요.</p>
-          <pre class="code">uvicorn tools.chartgen.server:app --host 127.0.0.1 --port 8000</pre>
-          <div class="tool-row"><button id="generateFromServer">업로드한 곡으로 자동 생성</button></div>
+          <p class="eyebrow">AUTO CHARTGEN</p><h2>Python 자동 채보</h2><p class="muted">원본의 자동 분석은 별도 Python 서버가 필요합니다. 이 체험판에서는 수동 편집 또는 이미 생성된 JSON 가져오기를 사용하세요.</p>
+          <p class="muted">서버가 연결되지 않은 체험판에서는 자동 분석을 사용할 수 없습니다.</p>
+          <div class="tool-row"><button id="generateFromServer" disabled title="별도 Python 분석 서버가 필요한 원본 기능입니다">자동 생성 · 분석 서버 필요</button></div>
           <label class="drop-zone"><span>생성된 JSON 불러오기</span><input id="generatedChartUpload" type="file" accept="application/json,.json" /></label>
           <hr />
           <p class="eyebrow">SONG LIBRARY</p><h2>관리자 라이브러리</h2><select id="songLibrary" size="7"></select><div class="tool-row"><button id="loadSong">불러오기</button><button id="deleteSong" class="secondary">삭제</button></div>

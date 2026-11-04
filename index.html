@@ -8,8 +8,8 @@
   <body class="play-page">
     <main class="shell game-shell">
       <section class="hud" aria-label="게임 상태">
-        <div><span>Song</span><strong id="songLabel">Demo Track</strong></div>
-        <div><span>Difficulty</span><strong id="difficultyLabel">Normal</strong></div>
+        <div><span>Song</span><strong id="songLabel">Neon Steps · 체험곡</strong></div>
+        <div><span>Difficulty</span><strong id="difficultyLabel">Easy</strong></div>
         <div><span>Score</span><strong id="score">0</strong></div>
         <div><span>Combo</span><strong id="combo">0</strong></div>
         <div><span>Accuracy</span><strong id="accuracy">100.00%</strong></div>
@@ -17,17 +17,18 @@
       </section>
 
       <section class="game-card">
-        <canvas id="game" width="1100" height="560" aria-label="Sidebeat Lanes game canvas"></canvas>
+        <div class="demo-intro"><span><b>SIDEBEAT LANES</b> · 오른쪽에서 오는 노트가 왼쪽 판정선에 닿을 때 누르세요.</span><a href="admin.html" target="_blank">채보 스튜디오 ↗</a></div><canvas id="game" width="1100" height="560" aria-label="Sidebeat Lanes game canvas"></canvas>
         <div class="controls">
-          <label class="pill-field"><span>난이도</span><select id="difficultySelect"><option value="easy">Easy</option><option value="normal" selected>Normal</option><option value="hard">Hard</option><option value="expert">Expert</option></select></label>
-          <label class="pill-field"><span>라이브러리</span><select id="songLibrary"><option value="">Demo Track</option></select></label>
+          <label class="pill-field"><span>난이도</span><select id="difficultySelect"><option value="easy" selected>Easy · 입문</option><option value="normal">Normal</option><option value="hard">Hard</option><option value="expert">Expert</option></select></label>
+          <label class="pill-field"><span>라이브러리</span><select id="songLibrary"><option value="">Neon Steps · 내장 체험곡</option></select></label>
           <label class="pill-field file-field"><span>곡</span><input id="audioUpload" type="file" accept="audio/*" /></label>
           <label class="pill-field file-field"><span>채보</span><input id="chartUpload" type="file" accept="application/json,.json" /></label>
           <audio id="audioPlayer" controls preload="metadata"></audio>
-          <button id="startButton">Start / Pause</button>
-          <button id="restartButton" class="secondary">Restart</button>
+          <button id="startButton">▶ 시작 / 일시정지</button>
+          <button id="restartButton" class="secondary">↻ 처음부터</button>
           <p class="control-hint"><kbd>D</kbd><kbd>F</kbd><kbd>J</kbd><kbd>K</kbd><span>롱노트 유지</span><kbd>Space</kbd><span>시작</span><kbd>R</kbd><span>재시작</span></p>
         </div>
+        <div class="touch-lanes" aria-label="터치 레인"><button data-play-lane="0" aria-label="D 레인 누르기">D</button><button data-play-lane="1" aria-label="F 레인 누르기">F</button><button data-play-lane="2" aria-label="J 레인 누르기">J</button><button data-play-lane="3" aria-label="K 레인 누르기">K</button></div>
       </section>
 
       <section class="feedback"><strong id="judgement">Ready</strong><span id="status">스페이스 또는 Start를 눌러 시작하세요.</span></section>
@@ -40,6 +41,7 @@
         <button id="closeResult" type="button">닫기</button>
       </div>
     </dialog>
+    <footer class="source-credit">gamparda의 <a href="https://github.com/gamparda/sidebeat-lanes" target="_blank" rel="noopener">원본 프로젝트</a> · 원본 엔진 + 자체 합성 체험곡 / 터치 조작 추가 · MIT</footer>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

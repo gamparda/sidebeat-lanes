@@ -21,10 +21,18 @@ export class CommentList {
   }
 
   render(): void {
-    this.options.list.innerHTML = '';
+    this.options.list.replaceChildren();
     this.options.getComments().forEach((comment, index) => {
       const row = document.createElement('li');
-      row.innerHTML = `<button data-remove-comment="${index}">×</button><button data-jump-comment="${comment.time}">${(comment.time / 1000).toFixed(2)}s</button><span>${comment.text}</span>`;
+      const remove = document.createElement('button');
+      remove.dataset.removeComment = String(index);
+      remove.textContent = '×';
+      const jump = document.createElement('button');
+      jump.dataset.jumpComment = String(comment.time);
+      jump.textContent = `${(comment.time / 1000).toFixed(2)}s`;
+      const text = document.createElement('span');
+      text.textContent = comment.text;
+      row.append(remove, jump, text);
       this.options.list.append(row);
     });
   }
